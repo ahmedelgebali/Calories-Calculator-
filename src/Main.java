@@ -2,8 +2,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        //calculate calories based on only basic questions
 
-                Scanner scanner = new Scanner(System.in);
+
+
+        Scanner scanner = new Scanner(System.in);
 
                 System.out.println("Goal Based Onboarding Questionnaire, first party upon the app initial open");
 
@@ -138,10 +141,12 @@ public class Main {
                 };
             }
 
-            private static void processInput(int ageGroup, double currentWeight, double height, int gender, int goal, int approach, int calorieReduction, int timeToResults, int foodTracking, int exerciseTimeCommitment, double calorieGoal) {
+            private static void processInput(int ageGroup, double currentWeight, double height, int gender, int goal, int approach, int calorieReduction,
+                                             int timeToResults, int foodTracking, int exerciseTimeCommitment, double calorieGoal) {
                 // print the values
                 System.out.println("\nUser Input Summary:");
-                System.out.printf("Age Group: %d\nCurrent Weight: %.2f kg\nHeight: %.2f cm\nGender: %d\nGoal: %d\nApproach: %d\nCalorie Reduction Aim: %d\nTime to Results: %d\nFood Tracking: %d\nExercise Time Commitment: %d\nTarget Daily Calories: %.2f kcal\n",
+                System.out.printf("Age Group: %d\nCurrent Weight: %.2f kg\nHeight: %.2f cm\nGender: %d\nGoal: %d\nApproach: %d\nCalorie Reduction Aim: %d\nTime to Results: " +
+                                "%d\nFood Tracking: %d\nExercise Time Commitment: %d\nTarget Daily Calories: %.2f kcal\n",
                         ageGroup, currentWeight, height, gender, goal, approach, calorieReduction, timeToResults, foodTracking, exerciseTimeCommitment, calorieGoal);
             }
 
