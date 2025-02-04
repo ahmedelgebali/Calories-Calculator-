@@ -144,8 +144,5 @@ public class Main {
                 System.out.printf("Age Group: %d\nCurrent Weight: %.2f kg\nHeight: %.2f cm\nGender: %d\nGoal: %d\nApproach: %d\nCalorie Reduction Aim: %d\nTime to Results: %d\nFood Tracking: %d\nExercise Time Commitment: %d\nTarget Daily Calories: %.2f kcal\n",
                         ageGroup, currentWeight, height, gender, goal, approach, calorieReduction, timeToResults, foodTracking, exerciseTimeCommitment, calorieGoal);
             }
-        }
 
-
-    }
 }
