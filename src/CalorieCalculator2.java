@@ -1,16 +1,16 @@
 public class CalorieCalculator2 {
     public static void main(String[] args) {
-        int age = 25;
+        int age = 26;
         int height = 188;
         int weight = 80;
+        int gender = 1;             //  1- Male, 2 - Female, 3 - Other
+        int activityChoice = 4;     //  1- Sedentary, 2 - Lightly Active, 3 - Moderately Active, 4 - Very Active
+        int approachChoice = 3;     //  1- Moderate, 2- Intensive, 3- Balanced
+        int goalChoice = 3;         //  1- Lose Fat, 2- Gain Weight, 3- Be Healthier
 
-        // Gender: 1 - Male, 2 - Female, 3 - Other
-        int gender = 2;
-        double bmr = 0;
 
-        // Activity level: 1 - Sedentary, 2 - Lightly Active, 3 - Moderately Active, 4 - Very Active
-        int active = 3;
 
+        double bmr;
         if (gender == 2) {
             // Calculation BMR for female
             bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
@@ -19,35 +19,52 @@ public class CalorieCalculator2 {
             bmr = (10 * weight) + (6.25 * height) - (5 * age) + 161;
         }
 
-        double tdee = 0;
-        if (active == 1) {
-            // Calculation TDEE for Sedentary
-            tdee = bmr * 1.2;
-        } else if (active == 2) {
-            // Calculation TDEE for Lightly Active
-            tdee = bmr * 1.375;
-        } else if (active == 3) {
-            // Calculation TDEE for Moderately Active
-            tdee = bmr * 1.55;
-        } else if (active == 4) {
-            // Calculation TDEE for Very Active
-            tdee = bmr * 1.725;
+
+
+        // Adjust for Activity Level
+        double activityFactor = switch (activityChoice) {
+            case 1 -> 1.2; // Sedentary
+            case 2 -> 1.375; // Lightly Active
+            case 3 -> 1.55; // Moderately Active
+            case 4 -> 1.725; // Very Active
+            default -> 1.2; // Default to Sedentary
+        };
+        double tdee = bmr * activityFactor;
+
+
+
+        // Set Caloric Target Based on Goal
+        double targetCalories = tdee;
+        switch (goalChoice) {
+            case 1: // Lose Fat
+                targetCalories = tdee - 500;
+                break;
+            case 2: // Gain Weight
+                targetCalories = tdee + 300; // Starting with +300
+                break;
+            case 3: // Be Healthier
+                targetCalories = tdee; // Maintenance
+                break;
         }
 
-        double targetCaloric = 0;
-
-        // User goal: 1 - Lose Fat, 2 - Gain Weight, 3 - Be Healthier
-        int userGoal = 1;
-        double caloricFromHealthApp = 500;
-
-        if (userGoal == 1) {
-            targetCaloric = tdee - caloricFromHealthApp;
-        } else if (userGoal == 2 || userGoal == 3) {
-            targetCaloric = tdee + caloricFromHealthApp;
+        // Modify Based on Approach
+        switch (approachChoice) {
+            case 1: // Moderate
+                break; // No change
+            case 2: // Intensive
+                targetCalories += (goalChoice == 1) ? -200 : 200;
+                break;
+            case 3: // Balanced
+                targetCalories += (goalChoice == 1) ? -300 : 300;
+                break;
         }
 
+
+
+        // Display Calories Needed
         System.out.println("BMR: " + bmr);
         System.out.println("TDEE: " + tdee);
-        System.out.println("Target Caloric: " + targetCaloric);
+        System.out.printf("\n your daily calorie target is %.0f calories/day.%n", targetCalories);
+
     }
 }

@@ -8,7 +8,7 @@ public class CalorieCalculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Collect User Data
+        // Collect User Data, run the code and answer the questions
         System.out.println("Select your gender:");
         System.out.println("1. Male\n2. Female");
         int genderChoice = scanner.nextInt();
@@ -35,6 +35,7 @@ public class CalorieCalculator {
         System.out.println("1. Moderate\n2. Intensive\n3. Balanced");
         int approachChoice = scanner.nextInt();
 
+
         // Calculate BMR
         double bmr;
         if (gender.equalsIgnoreCase("Male")) {
@@ -44,14 +45,13 @@ public class CalorieCalculator {
         }
 
         // Adjust for Activity Level
-        double activityFactor;
-        switch (activityChoice) {
-            case 1: activityFactor = 1.2; break; // Sedentary
-            case 2: activityFactor = 1.375; break; // Lightly Active
-            case 3: activityFactor = 1.55; break; // Moderately Active
-            case 4: activityFactor = 1.725; break; // Very Active
-            default: activityFactor = 1.2; // Default to Sedentary
-        }
+        double activityFactor = switch (activityChoice) {
+            case 1 -> 1.2; // Sedentary
+            case 2 -> 1.375; // Lightly Active
+            case 3 -> 1.55; // Moderately Active
+            case 4 -> 1.725; // Very Active
+            default -> 1.2; // Default to Sedentary
+        };
 
         double tdee = bmr * activityFactor;
 
@@ -82,8 +82,7 @@ public class CalorieCalculator {
         }
 
         // Display Calories Needed
-        System.out.printf("\nTo achieve your goal, your daily calorie target is %.0f calories/day.%n", targetCalories);
-        System.out.println("This includes adjustments for your activity level and goal.");
+        System.out.printf("\n your daily calorie target is %.0f calories/day.%n", targetCalories);
 
         scanner.close();
     }
