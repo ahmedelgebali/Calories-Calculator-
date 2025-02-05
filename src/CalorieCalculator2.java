@@ -6,17 +6,18 @@ public class CalorieCalculator2 {
         int gender = 1;             //  1- Male, 2 - Female, 3 - Other
         int activityChoice = 4;     //  1- Sedentary, 2 - Lightly Active, 3 - Moderately Active, 4 - Very Active
         int approachChoice = 3;     //  1- Moderate, 2- Intensive, 3- Balanced
-        int goalChoice = 3;         //  1- Lose Fat, 2- Gain Weight, 3- Be Healthier
+        int goalChoice = 1;         //  1- Lose Fat, 2- Gain Weight, 3- Be Healthier
 
 
 
         double bmr;
         if (gender == 2) {
             // Calculation BMR for female
-            bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+            bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
         } else {
             // Calculation BMR for male
-            bmr = (10 * weight) + (6.25 * height) - (5 * age) + 161;
+            bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+
         }
 
 
